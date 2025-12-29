@@ -4,448 +4,24 @@
   <meta charset="UTF-8">
   <title>Світлиця Майстра - Майстерня Меблів</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <style>
-    @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Inter:wght@300;400;500;600&display=swap');
-
-    :root {
-      --bg-main: #fefefe;
-      --bg-soft: #f8f7f5;
-      --bg-card: #ffffff;
-      
-      --text-main: #1a1a1a;
-      --text-muted: #6b6b6b;
-      --text-light: #9a9a9a;
-      
-      --accent-primary: #8b7355;
-      --accent-hover: #6d5940;
-      --accent-light: #d4c4b0;
-      
-      --line-subtle: #e8e6e3;
-      --shadow-soft: rgba(0, 0, 0, 0.04);
-      --shadow-hover: rgba(0, 0, 0, 0.12);
-      
-      --radius-sm: 8px;
-      --radius-md: 12px;
-      --radius-lg: 16px;
-      
-      --transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    }
-
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
-
-    body {
-      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-      background: var(--bg-main);
-      color: var(--text-main);
-      line-height: 1.6;
-      overflow-x: hidden;
-    }
-
-    /* Header */
-    .header {
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      background: rgba(254, 254, 254, 0.85);
-      backdrop-filter: blur(20px) saturate(180%);
-      border-bottom: 1px solid var(--line-subtle);
-      animation: slideDown 0.6s ease-out;
-    }
-
-    @keyframes slideDown {
-      from {
-        transform: translateY(-100%);
-        opacity: 0;
-      }
-      to {
-        transform: translateY(0);
-        opacity: 1;
-      }
-    }
-
-    .header-content {
-      max-width: 1400px;
-      margin: 0 auto;
-      padding: 24px 48px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-
-    .logo {
-      display: flex;
-      align-items: center;
-      gap: 16px;
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 22px;
-      font-weight: 500;
-      letter-spacing: 0.5px;
-      color: var(--text-main);
-      text-decoration: none;
-      transition: var(--transition);
-    }
-
-    .logo:hover {
-      color: var(--accent-primary);
-    }
-
-    .logo-icon {
-      width: 42px;
-      height: 42px;
-      background: linear-gradient(135deg, var(--accent-primary), var(--accent-light));
-      border-radius: var(--radius-sm);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: white;
-      font-size: 20px;
-      font-weight: 600;
-    }
-
-    .nav {
-      display: flex;
-      gap: 4px;
-    }
-
-    .nav a {
-      padding: 10px 20px;
-      font-size: 14px;
-      font-weight: 500;
-      letter-spacing: 0.3px;
-      text-decoration: none;
-      color: var(--text-muted);
-      border-radius: var(--radius-sm);
-      transition: var(--transition);
-      position: relative;
-    }
-
-    .nav a:hover {
-      color: var(--accent-primary);
-      background: var(--bg-soft);
-    }
-
-    /* Hero Section */
-    .hero {
-      max-width: 1400px;
-      margin: 0 auto;
-      padding: 120px 48px 80px;
-      text-align: center;
-    }
-
-    .hero-content {
-      max-width: 800px;
-      margin: 0 auto;
-      animation: fadeInUp 0.8s ease-out 0.2s backwards;
-    }
-
-    @keyframes fadeInUp {
-      from {
-        opacity: 0;
-        transform: translateY(30px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    .hero h1 {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 62px;
-      font-weight: 400;
-      letter-spacing: -0.5px;
-      line-height: 1.2;
-      margin-bottom: 28px;
-      color: var(--text-main);
-    }
-
-    .hero-subtitle {
-      font-size: 20px;
-      color: var(--text-muted);
-      line-height: 1.7;
-      font-weight: 400;
-      margin-bottom: 48px;
-    }
-
-    .hero-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      padding: 8px 20px;
-      background: var(--bg-soft);
-      border: 1px solid var(--line-subtle);
-      border-radius: 50px;
-      font-size: 13px;
-      color: var(--text-muted);
-      margin-bottom: 32px;
-    }
-
-    .badge-dot {
-      width: 8px;
-      height: 8px;
-      background: var(--accent-primary);
-      border-radius: 50%;
-      animation: pulse 2s infinite;
-    }
-
-    @keyframes pulse {
-      0%, 100% { opacity: 1; }
-      50% { opacity: 0.5; }
-    }
-
-    /* Grid */
-    .grid-container {
-      max-width: 1400px;
-      margin: 0 auto;
-      padding: 0 48px 120px;
-    }
-
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
-      gap: 32px;
-    }
-
-    .card {
-      position: relative;
-      display: block;
-      background: var(--bg-card);
-      border-radius: var(--radius-lg);
-      overflow: hidden;
-      text-decoration: none;
-      box-shadow: 0 4px 20px var(--shadow-soft);
-      transition: var(--transition);
-      animation: fadeInUp 0.6s ease-out backwards;
-    }
-
-    .card:nth-child(1) { animation-delay: 0.1s; }
-    .card:nth-child(2) { animation-delay: 0.15s; }
-    .card:nth-child(3) { animation-delay: 0.2s; }
-    .card:nth-child(4) { animation-delay: 0.25s; }
-    .card:nth-child(5) { animation-delay: 0.3s; }
-    .card:nth-child(6) { animation-delay: 0.35s; }
-    .card:nth-child(7) { animation-delay: 0.4s; }
-    .card:nth-child(8) { animation-delay: 0.45s; }
-    .card:nth-child(9) { animation-delay: 0.5s; }
-    .card:nth-child(10) { animation-delay: 0.55s; }
-    .card:nth-child(11) { animation-delay: 0.6s; }
-
-    .card:hover {
-      transform: translateY(-8px);
-      box-shadow: 0 20px 40px var(--shadow-hover);
-    }
-
-    .card-image-wrapper {
-      position: relative;
-      width: 100%;
-      height: 380px;
-      overflow: hidden;
-      background: var(--bg-soft);
-    }
-
-    .card-image {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-    }
-
-    .card:hover .card-image {
-      transform: scale(1.08);
-    }
-
-    .card-overlay {
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(
-        to bottom,
-        rgba(0, 0, 0, 0) 0%,
-        rgba(0, 0, 0, 0.1) 50%,
-        rgba(0, 0, 0, 0.6) 100%
-      );
-      opacity: 0;
-      transition: var(--transition);
-    }
-
-    .card:hover .card-overlay {
-      opacity: 1;
-    }
-
-    .card-content {
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      padding: 32px;
-      z-index: 2;
-    }
-
-    .card-title {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 28px;
-      font-weight: 500;
-      color: white;
-      text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
-      transform: translateY(10px);
-      transition: var(--transition);
-    }
-
-    .card:hover .card-title {
-      transform: translateY(0);
-    }
-
-    .card-arrow {
-      position: absolute;
-      top: 24px;
-      right: 24px;
-      width: 40px;
-      height: 40px;
-      background: rgba(255, 255, 255, 0.95);
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      opacity: 0;
-      transform: translate(10px, -10px);
-      transition: var(--transition);
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-    }
-
-    .card:hover .card-arrow {
-      opacity: 1;
-      transform: translate(0, 0);
-    }
-
-    /* Footer */
-    .footer {
-      background: var(--bg-soft);
-      border-top: 1px solid var(--line-subtle);
-      padding: 80px 48px;
-      margin-top: 80px;
-    }
-
-    .footer-content {
-      max-width: 1400px;
-      margin: 0 auto;
-      display: grid;
-      grid-template-columns: 2fr 1fr 1fr;
-      gap: 60px;
-    }
-
-    .footer-section h3 {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 24px;
-      font-weight: 500;
-      margin-bottom: 24px;
-      color: var(--text-main);
-    }
-
-    .footer-section p {
-      color: var(--text-muted);
-      line-height: 1.8;
-      margin-bottom: 12px;
-    }
-
-    .contact-item {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      margin-bottom: 16px;
-      color: var(--text-muted);
-      text-decoration: none;
-      transition: var(--transition);
-    }
-
-    .contact-item:hover {
-      color: var(--accent-primary);
-    }
-
-    .footer-bottom {
-      max-width: 1400px;
-      margin: 60px auto 0;
-      padding-top: 32px;
-      border-top: 1px solid var(--line-subtle);
-      text-align: center;
-      color: var(--text-light);
-      font-size: 14px;
-    }
-
-    /* Responsive */
-    @media (max-width: 1024px) {
-      .grid {
-        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-        gap: 24px;
-      }
-
-      .footer-content {
-        grid-template-columns: 1fr;
-        gap: 40px;
-      }
-    }
-
-    @media (max-width: 768px) {
-      .header-content {
-        padding: 20px 24px;
-        flex-direction: column;
-        gap: 20px;
-      }
-
-      .nav {
-        flex-wrap: wrap;
-        justify-content: center;
-      }
-
-      .hero {
-        padding: 80px 24px 60px;
-      }
-
-      .hero h1 {
-        font-size: 42px;
-      }
-
-      .hero-subtitle {
-        font-size: 18px;
-      }
-
-      .grid-container {
-        padding: 0 24px 80px;
-      }
-
-      .grid {
-        grid-template-columns: 1fr;
-      }
-
-      .card-image-wrapper {
-        height: 320px;
-      }
-
-      .footer {
-        padding: 60px 24px;
-      }
-    }
-  </style>
+  <link rel="stylesheet" href="styles/common.css">
+  <link rel="stylesheet" href="styles/home.css">
 </head>
 <body>
 
 <header class="header">
   <div class="header-content">
     <a href="#" class="logo">
-      <div class="logo-icon">СМ</div>
+      <div class="logo-icon">
+        <img src="images/logo.png" alt="Світлиця Майстра">
+      </div>
       Світлиця Майстра
     </a>
     <nav class="nav">
       <a href="#">Головна</a>
-      <a href="#">Каталог</a>
+      <!-- <a href="#">Каталог</a>
       <a href="#">Про нас</a>
-      <a href="#">Контакти</a>
+      <a href="#">Контакти</a> -->
     </nav>
   </div>
 </header>
@@ -467,7 +43,7 @@
 
   <div class="grid-container">
     <div class="grid">
-      <a href="/sections/ліжка.html" class="card">
+      <a href="sections/ліжка.html" class="card">
         <div class="card-image-wrapper">
           <img class="card-image" src="images/ліжка/1.jpeg" alt="Ліжка">
           <div class="card-overlay"></div>
@@ -478,7 +54,7 @@
         </div>
       </a>
 
-      <a href="#" class="card">
+      <a href="sections/шафи.html" class="card">
         <div class="card-image-wrapper">
           <img class="card-image" src="images/шафи/1.jpeg" alt="Шафи">
           <div class="card-overlay"></div>
@@ -489,7 +65,7 @@
         </div>
       </a>
 
-      <a href="#" class="card">
+      <a href="sections/chest_of_drawers.html" class="card">
         <div class="card-image-wrapper">
           <img class="card-image" src="images/chest_of_drawers/1.jpeg" alt="Комоди">
           <div class="card-overlay"></div>
@@ -500,7 +76,7 @@
         </div>
       </a>
 
-      <a href="#" class="card">
+      <a href="sections/muebles.html" class="card">
         <div class="card-image-wrapper">
           <img class="card-image" src="images/muebles/1.jpeg" alt="Вітальні">
           <div class="card-overlay"></div>
@@ -511,7 +87,7 @@
         </div>
       </a>
 
-      <a href="#" class="card">
+      <a href="sections/kitchen.html" class="card">
         <div class="card-image-wrapper">
           <img class="card-image" src="images/kitchen/1.jpeg" alt="Кухні">
           <div class="card-overlay"></div>
@@ -522,7 +98,7 @@
         </div>
       </a>
 
-      <a href="#" class="card">
+      <a href="sections/door.html" class="card">
         <div class="card-image-wrapper">
           <img class="card-image" src="images/door/1.jpeg" alt="Двері">
           <div class="card-overlay"></div>
@@ -533,7 +109,7 @@
         </div>
       </a>
 
-      <a href="#" class="card">
+      <a href="sections/outdoor.html" class="card">
         <div class="card-image-wrapper">
           <img class="card-image" src="images/outdoor/1.jpeg" alt="Альтанки">
           <div class="card-overlay"></div>
